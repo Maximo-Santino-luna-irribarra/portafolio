@@ -1,0 +1,40 @@
+---
+import Layout from "../layouts/Layout.astro"
+import Navbar from "../components/Navbar.astro"
+import ProjectCard from "../components/ProjectCard.astro"
+---
+
+<Layout title="Santino | Portfolio">
+  <Navbar />
+
+  <main class="px-8">
+
+    <!-- HERO -->
+    <section class="min-h-[70vh] flex flex-col justify-center">
+      <h1 class="text-4xl font-bold mb-4">
+        Hola, soy Santino 👋
+      </h1>
+
+      <p class="text-zinc-400 max-w-xl">
+        Full Stack Developer enfocado en aplicaciones web modernas.
+      </p>
+    </section>
+
+    <!-- PROYECTOS -->
+    <section id="projects" class="grid md:grid-cols-3 gap-6">
+      <ProjectCard
+        title="Sistema de gestión"
+        desc="App web para administración de productos."
+        link="https://github.com"
+      />
+
+      <ProjectCard
+        title="Panel Admin"
+        desc="Dashboard con filtros y roles."
+        link="https://github.com"
+      />
+    </section>
+
+  </main>
+</Layout>
+

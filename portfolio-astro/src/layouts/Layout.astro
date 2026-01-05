@@ -1,0 +1,17 @@
+---
+import "../styles/global.css"
+
+const { title = "Santino | Portfolio" } = Astro.props
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>{title}</title>
+  </head>
+
+  <body class="bg-zinc-950 text-zinc-100">
+    <slot />
+  </body>
+</html>
