@@ -1,40 +1,72 @@
 ---
 import Layout from "../layouts/Layout.astro"
-import Navbar from "../components/Navbar.astro"
 import ProjectCard from "../components/ProjectCard.astro"
+import InfoCard from "../components/ui/InfoCards.astro"
 ---
-
 <Layout title="Santino | Portfolio">
-  <Navbar />
+  <main class="px-8 max-w-6xl mx-auto space-y-32">
 
-  <main class="px-8">
-
-    <!-- HERO -->
-    <section class="min-h-[70vh] flex flex-col justify-center">
-      <h1 class="text-4xl font-bold mb-4">
-        Hola, soy Santino 👋
-      </h1>
-
-      <p class="text-zinc-400 max-w-xl">
-        Full Stack Developer enfocado en aplicaciones web modernas.
-      </p>
+    <!-- PERFIL / HERO -->
+    <section
+      id="profile"
+      class="min-h-[70vh] flex items-center justify-center"
+    >
+      <InfoCard
+        name="Máximo Santino Luna Irribarra"
+        description="Desarrollador Full Stack con preferencia por el backend."
+        image="/ejem.jpg"
+      />
     </section>
 
     <!-- PROYECTOS -->
-    <section id="projects" class="grid md:grid-cols-3 gap-6">
-      <ProjectCard
-        title="Sistema de gestión"
-        desc="App web para administración de productos."
-        link="https://github.com"
-      />
+    <section id="projects">
+      <h2 class="text-3xl font-bold mb-10">
+        Proyectos
+      </h2>
 
-      <ProjectCard
-        title="Panel Admin"
-        desc="Dashboard con filtros y roles."
-        link="https://github.com"
-      />
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <ProjectCard
+          title="App web tipo tótem"
+          desc="App web para administración de productos."
+          link="https://github.com"
+        />
+        <ProjectCard
+          title="Sala de Juegos"
+          desc="Sistema web interactivo."
+          link="https://github.com"
+        />
+        <ProjectCard
+          title="App mobile"
+          desc="Dashboard con filtros y roles."
+          link="https://github.com"
+        />
+      </div>
+    </section>
+
+    <!-- TECNOLOGÍAS -->
+    <section id="tech">
+      <h2 class="text-3xl font-bold mb-10">
+        Tecnologías
+      </h2>
+
+      <div class="flex flex-wrap gap-4">
+        <span class="px-4 py-2 rounded-lg bg-zinc-800">JavaScript</span>
+        <span class="px-4 py-2 rounded-lg bg-zinc-800">Node.js</span>
+        <span class="px-4 py-2 rounded-lg bg-zinc-800">MongoDB</span>
+        <span class="px-4 py-2 rounded-lg bg-zinc-800">Astro</span>
+      </div>
+    </section>
+
+    <!-- EDUCACIÓN -->
+    <section id="education">
+      <h2 class="text-3xl font-bold mb-6">
+        Educación
+      </h2>
+
+      <p class="text-zinc-400 max-w-xl">
+        Técnico en Programación · Formación en desarrollo web y backend.
+      </p>
     </section>
 
   </main>
 </Layout>
-

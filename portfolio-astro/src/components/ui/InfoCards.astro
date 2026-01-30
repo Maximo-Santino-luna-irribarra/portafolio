@@ -1,0 +1,29 @@
+---
+const { name, description, image } = Astro.props
+---
+
+<div class="max-w-2xl min-h-[220px] rounded-xl border border-zinc-800 bg-zinc-900 p-6 flex flex-col sm:flex-row gap-6">
+
+  <!-- Imagen -->
+  <div class="w-24 h-24 sm:w-32 sm:h-32 rounded-full bg-zinc-800 overflow-hidden shrink-0">
+    {image && (
+      <img
+        src={image}
+        alt={name}
+        class="w-full h-full object-cover"
+      />
+    )}
+  </div>
+
+  <!-- Info -->
+  <div class="flex flex-col justify-center">
+    <h3 class="text-xl font-semibold mb-2">
+      {name}
+    </h3>
+
+    <p class="text-zinc-400 text-sm max-w-md">
+      {description}
+    </p>
+  </div>
+
+</div>
