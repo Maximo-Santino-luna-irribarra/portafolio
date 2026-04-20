@@ -1,0 +1,76 @@
+---
+interface TechItem {
+    name: string;
+    image: string;
+    description: string;
+}
+
+interface Props {
+    items: TechItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+    {
+        items.map((tech, index) => (
+        <button
+            class="group relative flex flex-col items-center justify-center rounded-2xl border border-zinc-800 bg-zinc-900/60 p-5 transition hover:scale-[1.03] hover:border-zinc-600 hover:bg-zinc-800/70"
+            type="button"
+            data-tech-trigger={index}
+        >
+            <img
+            src={tech.image}
+            alt={tech.name}
+            class="h-14 w-14 object-contain"
+            />
+
+            <span class="mt-3 text-sm font-medium text-zinc-200">
+            {tech.name}
+            </span>
+
+            <div
+            class="pointer-events-none absolute -top-2 left-1/2 z-10 hidden w-52 -translate-x-1/2 -translate-y-full rounded-xl border border-zinc-700 bg-zinc-950 p-3 text-xs text-zinc-300 shadow-xl group-hover:block"
+            data-tech-info={index}
+            >
+            {tech.description}
+            </div>
+        </button>
+        ))
+    }
+</div>
+
+<script>
+    const triggers = document.querySelectorAll("[data-tech-trigger]");
+
+    triggers.forEach((trigger) => {
+        trigger.addEventListener("click", () => {
+        const index = trigger.getAttribute("data-tech-trigger");
+        const info = trigger.querySelector(`[data-tech-info="${index}"]`);
+
+        if (!info) return;
+
+        const isHidden = info.classList.contains("hidden");
+
+        document.querySelectorAll("[data-tech-info]").forEach((el) => {
+            el.classList.add("hidden");
+        });
+
+        if (isHidden) {
+            info.classList.remove("hidden");
+        }
+        });
+    });
+
+    document.addEventListener("click", (e) => {
+        const target = e.target;
+        if (!(target instanceof HTMLElement)) return;
+
+        if (!target.closest("[data-tech-trigger]")) {
+        document.querySelectorAll("[data-tech-info]").forEach((el) => {
+            el.classList.add("hidden");
+        });
+        }
+    });
+</script>

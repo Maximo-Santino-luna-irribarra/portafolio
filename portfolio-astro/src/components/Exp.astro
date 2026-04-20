@@ -1,0 +1,40 @@
+---
+interface ExperienceItem {
+  company: string;
+  period: string;
+  role: string;
+  description: string;
+}
+
+interface Props {
+    items: ExperienceItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<section id="experience">
+    <div class="bg-zinc-900 border border-zinc-800 rounded-xl p-6">
+        <h2 class="text-3xl font-bold mb-6">
+        Experiencia
+        </h2>
+
+        <div class="space-y-4">
+        {
+            items.map((item) => (
+            <div class="border-b border-zinc-800 pb-4 last:border-b-0 last:pb-0">
+                <h3 class="text-lg font-semibold text-white">
+                {item.role}
+                </h3>
+                <p class="text-sm text-zinc-500">
+                {item.company} · {item.period}
+                </p>
+                <p class="text-zinc-400 mt-1">
+                {item.description}
+                </p>
+            </div>
+            ))
+        }
+        </div>
+    </div>
+</section>

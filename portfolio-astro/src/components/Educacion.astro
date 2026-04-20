@@ -1,0 +1,39 @@
+---
+interface EducationItem {
+    title: string;
+    period: string;
+    description: string;
+}
+
+interface Props {
+    items: EducationItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<section id="education">
+    <div class="bg-zinc-900 border border-zinc-800 rounded-xl p-6">
+    <h2 class="text-3xl font-bold mb-6">
+        Educación
+    </h2>
+
+<div class="space-y-4">
+        {
+            items.map((item) => (
+            <div class="border-b border-zinc-800 pb-4 last:border-b-0 last:pb-0">
+                <h3 class="text-lg font-semibold text-white">
+                {item.title}
+                </h3>
+                <p class="text-sm text-zinc-500">
+                {item.period}
+                </p>
+                <p class="text-zinc-400 mt-1">
+                {item.description}
+                </p>
+            </div>
+            ))
+        }
+    </div>
+</div>
+</section>

@@ -1,8 +1,13 @@
 ---
-import Layout from "../layouts/Layout.astro"
-import ProjectCard from "../components/ProjectCard.astro"
-import InfoCard from "../components/ui/InfoCards.astro"
+import Layout from "../layouts/Layout.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import InfoCard from "../components/ui/InfoCards.astro";
+import Stack from "../components/Stack.astro";
+import Educacion from "../components/Educacion.astro"
+import Exp from "../components/Exp.astro";
+import { projects, technologies, education, experience } from "../constants";
 ---
+
 <Layout title="Santino | Portfolio">
   <main class="px-8 max-w-6xl mx-auto space-y-32">
 
@@ -25,21 +30,15 @@ import InfoCard from "../components/ui/InfoCards.astro"
       </h2>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <ProjectCard
-          title="App web tipo tótem"
-          desc="App web para administración de productos."
-          link="https://github.com"
-        />
-        <ProjectCard
-          title="Sala de Juegos"
-          desc="Sistema web interactivo."
-          link="https://github.com"
-        />
-        <ProjectCard
-          title="App mobile"
-          desc="Dashboard con filtros y roles."
-          link="https://github.com"
-        />
+        {
+          projects.map((project) => (
+            <ProjectCard
+              title={project.title}
+              desc={project.desc}
+              link={project.link}
+            />
+          ))
+        }
       </div>
     </section>
 
@@ -49,25 +48,14 @@ import InfoCard from "../components/ui/InfoCards.astro"
         Tecnologías
       </h2>
 
-      <div class="flex flex-wrap gap-4">
-        <span class="px-4 py-2 rounded-lg bg-zinc-800">JavaScript</span>
-        <span class="px-4 py-2 rounded-lg bg-zinc-800">Node.js</span>
-        <span class="px-4 py-2 rounded-lg bg-zinc-800">MongoDB</span>
-        <span class="px-4 py-2 rounded-lg bg-zinc-800">Astro</span>
-      </div>
+      <Stack items={technologies} />
     </section>
+
+    <!-- EXPERIENCIA -->
+    <Exp items={experience} />
 
     <!-- EDUCACIÓN -->
-    <section id="education">
-      <h2 class="text-3xl font-bold mb-6">
-        Educación
-      </h2>
-
-      <p class="text-zinc-400 max-w-xl">
-        Técnico en Programación · Formación en desarrollo web y backend.
-        +
-      </p>
-    </section>
+    <Educacion items={education} />
 
   </main>
 </Layout>
