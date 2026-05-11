@@ -1,0 +1,72 @@
+---
+import { projects } from '../data/projects';
+---
+
+<section id="proyectos" class="bg-zinc-900/30">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+      <div>
+        <h2 class="text-3xl md:text-4xl font-bold mb-2">Proyectos Destacados</h2>
+        <p class="text-zinc-500">Una selección de mis trabajos más recientes.</p>
+      </div>
+      <a href="https://github.com/Maximo-Santino-luna-irribarra" target="_blank" class="text-cyan-500 hover:text-cyan-400 font-medium transition-colors">
+        Ver todo en GitHub →
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {projects.map((project) => (
+        <div class="flex flex-col bg-zinc-900 border border-zinc-800 rounded-xl overflow-hidden hover:translate-y-[-4px] transition-all duration-300 group">
+          <div class="aspect-video bg-zinc-800 relative overflow-hidden">
+            {project.image ? (
+              <img 
+                src={project.image} 
+                alt={project.title}
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+            ) : (
+              <div class="absolute inset-0 flex items-center justify-center text-zinc-700 bg-zinc-800 group-hover:scale-110 transition-transform duration-500">
+                <svg class="w-12 h-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </div>
+            )}
+          </div>
+          
+          <div class="p-6 flex flex-col flex-grow">
+            <h3 class="text-xl font-bold mb-2 group-hover:text-cyan-400 transition-colors">{project.title}</h3>
+            <p class="text-zinc-400 text-sm mb-6 line-clamp-2">
+              {project.description}
+            </p>
+            
+            <div class="flex flex-wrap gap-2 mb-6 mt-auto">
+              {project.tags.map((tag) => (
+                <span class="text-[10px] uppercase tracking-wider font-bold px-2 py-0.5 bg-zinc-800 text-zinc-400 rounded">
+                  {tag}
+                </span>
+              ))}
+            </div>
+            
+            <div class="flex gap-4">
+              {project.link && (
+                <a 
+                  href={project.link} 
+                  target="_blank" 
+                  class="flex-1 text-center py-2 bg-zinc-100 text-zinc-900 text-sm font-bold rounded hover:bg-white transition-colors"
+                >
+                  Ver Proyecto
+                </a>
+              )}
+              <a 
+                href="#" 
+                class="flex-1 text-center py-2 border border-zinc-700 text-zinc-300 text-sm font-bold rounded hover:bg-zinc-800 transition-colors"
+              >
+                Código
+              </a>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

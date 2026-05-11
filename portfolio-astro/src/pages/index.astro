@@ -1,61 +1,26 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import ProjectCard from "../components/ProjectCard.astro";
-import InfoCard from "../components/ui/InfoCards.astro";
-import Stack from "../components/Stack.astro";
-import Educacion from "../components/Educacion.astro"
-import Exp from "../components/Exp.astro";
-import { projects, technologies, education, experience } from "../constants";
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import Skills from '../components/Skills.astro';
+import Projects from '../components/Projects.astro';
+import Experience from '../components/Experience.astro';
+import Education from '../components/Education.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
 ---
 
-<Layout title="Santino | Portfolio">
-  <main class="px-8 max-w-6xl mx-auto space-y-32">
-
-    <!-- PERFIL / HERO -->
-    <section
-      id="profile"
-      class="min-h-[70vh] flex items-center justify-center"
-    >
-      <InfoCard
-        name="Máximo Santino Luna Irribarra"
-        description="Desarrollador Full Stack con preferencia por el backend."
-        image="/ejem.jpg"
-      />
-    </section>
-
-    <!-- PROYECTOS -->
-    <section id="projects">
-      <h2 class="text-3xl font-bold mb-10">
-        Proyectos
-      </h2>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {
-          projects.map((project) => (
-            <ProjectCard
-              title={project.title}
-              desc={project.desc}
-              link={project.link}
-            />
-          ))
-        }
-      </div>
-    </section>
-
-    <!-- TECNOLOGÍAS -->
-    <section id="tech">
-      <h2 class="text-3xl font-bold mb-10">
-        Tecnologías
-      </h2>
-
-      <Stack items={technologies} />
-    </section>
-
-    <!-- EXPERIENCIA -->
-    <Exp items={experience} />
-
-    <!-- EDUCACIÓN -->
-    <Educacion items={education} />
-
-  </main>
+<Layout title="Máximo Luna | Full Stack Developer">
+	<Navbar />
+	<main>
+		<Hero />
+		<About />
+		<Skills />
+		<Projects />
+		<Experience />
+		<Education />
+		<Contact />
+	</main>
+	<Footer />
 </Layout>

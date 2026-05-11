@@ -1,1 +1,42 @@
 @import "tailwindcss";
+
+@theme {
+  --color-accent: #22d3ee;
+  --color-accent-dark: #0891b2;
+  --color-bg-main: #000000;
+}
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+  
+  body {
+    @apply bg-[--color-bg-main] text-zinc-200 font-sans;
+  }
+
+  /* Scrollbar personalizado */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-bg-main);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #1f1f1f;
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #2d2d2d;
+  }
+}
+
+@layer components {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-indigo-500;
+  }
+  
+  .section-padding {
+    @apply py-20;
+  }
+}

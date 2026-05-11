@@ -1,20 +1,62 @@
 ---
-import "../styles/global.css"
-import Navbar from "../components/Navbar.astro"
+import '../styles/global.css';
 
-const { title = "Santino | Portfolio" } = Astro.props
+interface Props {
+	title: string;
+	description?: string;
+}
+
+const { title, description = "Portfolio profesional de Máximo Santino Luna Irribarra - Programador Full Stack" } = Astro.props;
 ---
 
-<!DOCTYPE html>
-<html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <title>{title}</title>
-  </head>
-
-  <body class="bg-zinc-950 text-zinc-100">
-    <Navbar />
-    <slot />
-  </body>
-
+<!doctype html>
+<html lang="es" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content={description} />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/png" href="/favicon.png" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	</head>
+	<body class="bg-[#0a0a0a] text-zinc-200 font-['Inter',sans-serif] selection:bg-cyan-500/30 selection:text-cyan-200">
+		<slot />
+	</body>
 </html>
+
+<style is:global>
+	:root {
+		--accent: 34, 211, 238; /* Cyan 400 */
+		--accent-light: 103, 232, 249;
+		--accent-dark: 8, 145, 178;
+		--bg-main: #000000;
+	}
+
+	::-webkit-scrollbar {
+		width: 8px;
+	}
+	::-webkit-scrollbar-track {
+		background: var(--bg-main);
+	}
+	::-webkit-scrollbar-thumb {
+		background: #1f1f1f;
+		border-radius: 10px;
+	}
+	::-webkit-scrollbar-thumb:hover {
+		background: #2d2d2d;
+	}
+
+	section {
+		padding-top: 5rem;
+		padding-bottom: 5rem;
+	}
+
+	.text-gradient {
+		background: linear-gradient(to right, #22d3ee, #818cf8);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+</style>

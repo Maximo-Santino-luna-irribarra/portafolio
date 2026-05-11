@@ -1,42 +1,76 @@
-<nav class="flex justify-between items-center py-6 px-8
-            bg-gradient-to-r from-zinc-900 via-zinc-900/90 to-zinc-950
-            border-b border-zinc-800/60">
+---
+const navItems = [
+  { name: "Inicio", href: "#inicio" },
+  { name: "Sobre mí", href: "#sobre-mi" },
+  { name: "Habilidades", href: "#habilidades" },
+  { name: "Proyectos", href: "#proyectos" },
+  { name: "Experiencia", href: "#experiencia" },
+  { name: "Contacto", href: "#contacto" },
+];
+---
 
-  <!-- Logo / Nombre -->
-  <div class="flex items-center">
-    <span class="font-bold text-lg">Santino</span>
+<nav class="fixed top-0 left-0 w-full z-50 bg-[#0a0a0a]/80 backdrop-blur-md border-b border-zinc-800/50">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <div class="flex-shrink-0">
+        <a href="#inicio" class="text-cyan-500 font-bold text-xl tracking-tighter">
+          MS<span class="text-zinc-100">LUNA</span>
+        </a>
+      </div>
+      
+      <!-- Desktop Menu -->
+      <div class="hidden md:block">
+        <div class="ml-10 flex items-baseline space-x-4">
+          {navItems.map((item) => (
+            <a
+              href={item.href}
+              class="text-zinc-400 hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+            >
+              {item.name}
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- Mobile Button (Simplified) -->
+      <div class="md:hidden">
+        <button id="mobile-menu-button" class="text-zinc-400 hover:text-white focus:outline-none">
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+          </svg>
+        </button>
+      </div>
+    </div>
   </div>
 
-  <!-- Navegación -->
-  <div class="flex gap-2">
-    
-    <div class="nav-item">
-      <a
-        href="#projects"
-        class="px-4 py-2 rounded-lg text-sm text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800 transition"
-      >
-        Proyectos
-      </a>
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-[#0a0a0a] border-b border-zinc-800">
+    <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+      {navItems.map((item) => (
+        <a
+          href={item.href}
+          class="text-zinc-400 hover:text-cyan-400 block px-3 py-2 rounded-md text-base font-medium"
+        >
+          {item.name}
+        </a>
+      ))}
     </div>
-
-    <div class="nav-item">
-      <a
-        href="#about"
-        class="px-4 py-2 rounded-lg text-sm text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800 transition"
-      >
-        Sobre mí
-      </a>
-    </div>
-
-    <div class="nav-item">
-      <a
-        href="#contact"
-        class="px-4 py-2 rounded-lg text-sm text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800 transition"
-      >
-        Contacto
-      </a>
-    </div>
-
   </div>
-
 </nav>
+
+<script>
+  const btn = document.getElementById('mobile-menu-button');
+  const menu = document.getElementById('mobile-menu');
+
+  btn?.addEventListener('click', () => {
+    menu?.classList.toggle('hidden');
+  });
+
+  // Close menu when clicking a link
+  const links = menu?.querySelectorAll('a');
+  links?.forEach(link => {
+    link.addEventListener('click', () => {
+      menu?.classList.add('hidden');
+    });
+  });
+</script>
